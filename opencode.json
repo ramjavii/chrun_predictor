@@ -1,0 +1,29 @@
+{
+  "instructions": ["AGENTS.md"],
+  "command": {
+    "test": {
+      "description": "Run the test suite with coverage",
+      "prompt": "Run `pytest --cov=src tests/ -v` and report failures, skipping integration tests that need external services."
+    },
+    "lint": {
+      "description": "Run ruff linter and formatter",
+      "prompt": "Run `ruff check . && ruff format . --check` and report remaining issues."
+    },
+    "train": {
+      "description": "Trigger a training pipeline run",
+      "prompt": "Run the training pipeline via `python -m src.pipeline.train` and report metrics."
+    }
+  },
+  "permission": {
+    "bash": {
+      "python *": "allow",
+      "pytest *": "allow",
+      "ruff *": "allow",
+      "git *": "allow",
+      "docker *": "allow",
+      "docker-compose *": "allow",
+      "pip *": "allow",
+      "*": "ask"
+    }
+  }
+}

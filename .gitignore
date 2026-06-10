@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+.venv*/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.production
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Docker
+.docker/
+
+# ML artifacts
+models/
+mlruns/
+mlartifacts/
+
+# Data
+data/raw/
+data/processed/
+data/interim/
+data/external/
+*.csv
+*.parquet
+*.feather
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Build / logs
+*.log
+logs/
+htmlcov/
+coverage/
+.coverage*
