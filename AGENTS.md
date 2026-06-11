@@ -43,3 +43,20 @@
 Whenever you create a new feature, directory, API route, or pipeline step,
 you must immediately update `docs/architecture.md` with a summary of the
 change and an updated tree structure of the files you touched.
+
+## Workflow Reminder
+
+For non-trivial code changes, the operating model is the `feature-loop`
+skill (`.opencode/skills/feature-loop/SKILL.md`):
+
+1. Prime with `MVP.md`, `spec.md`, and `docs/architecture.md`.
+2. Pick ONE micro-feature.
+3. Plan (MVP-aware: keep the current stage's scope).
+4. TDD execute.
+5. Validate with `/test` and `/lint`.
+6. Conventional commit.
+7. Sync `docs/architecture.md` and `MVP.md` (tick the checkbox only after
+   the feature is delivered *and* verified).
+
+Do not bundle multiple micro-features into one commit. Do not mark a
+checkbox as `- [x]` until the feature is verified end-to-end.

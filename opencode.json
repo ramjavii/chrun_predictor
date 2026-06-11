@@ -1,16 +1,20 @@
 {
+  "$schema": "https://opencode.ai/config.json",
   "instructions": ["AGENTS.md"],
   "command": {
     "test": {
       "description": "Run the test suite with coverage",
+      "template": "pytest --cov=src tests/ -v",
       "prompt": "Run `pytest --cov=src tests/ -v` and report failures, skipping integration tests that need external services."
     },
     "lint": {
       "description": "Run ruff linter and formatter",
+      "template": "ruff check . && ruff format . --check",
       "prompt": "Run `ruff check . && ruff format . --check` and report remaining issues."
     },
     "train": {
       "description": "Trigger a training pipeline run",
+      "template": "python -m src.pipeline.train",
       "prompt": "Run the training pipeline via `python -m src.pipeline.train` and report metrics."
     }
   },

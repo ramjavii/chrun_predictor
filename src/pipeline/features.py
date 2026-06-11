@@ -32,9 +32,9 @@ def _get_transform(name: str) -> Callable | None:
     return registry.get(name)
 
 
-def _count_events(df: pd.DataFrame, group_by: str = "customer_id", window_days: int = 30) -> pd.DataFrame:
-    ...
+def _count_events(df: pd.DataFrame, group_by: str = "customer_id", window_days: int = 30) -> pd.DataFrame: ...
 
 
-def _recency_days(df: pd.DataFrame, timestamp_col: str = "timestamp", group_by: str = "customer_id") -> pd.DataFrame:
-    ...
+def _recency_days(
+    df: pd.DataFrame, timestamp_col: str = "timestamp", group_by: str = "customer_id"
+) -> pd.DataFrame: ...

@@ -66,3 +66,15 @@ IDS/
     ├── processed/                  # Feature-engineered data (gitignored)
     └── models/                     # Trained artifacts (gitignored)
 ```
+
+## Changelog
+
+### 2026-06-10 — Ingestion API (Stage 1)
+- Implemented `POST /api/v1/events` and `POST /api/v1/events/batch`
+- Added `init_db()` auto-creates tables on startup via FastAPI lifespan
+- Refactored `src/models/database.py`: fixed `TIMESTAMPTZ` → `TIMESTAMP(timezone=True)`, deprecated `utcnow` → `datetime.now(UTC)`
+- Added response schemas `EventResponse` and `EventBatchResponse` to `src/models/schemas.py`
+- Tests: session-scoped event loop, in-memory conftest with `prepare_db` fixture
+- Added `ruff` to dev deps, configured `ignore = ["B008"]` for FastAPI `Depends()`
+- Renamed `IDSException` → `IDSError` (ruff N818)
+- Pinned all deps via pip install in Dockerfile

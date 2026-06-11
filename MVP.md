@@ -20,7 +20,7 @@ a pluggable churn-intelligence layer they can self-host or embed.
 
 ## Features
 
-- [ ] **Ingestion API** — receive customer events via REST endpoint
+- [x] **Ingestion API** — receive customer events via REST endpoint
 - [ ] **Feature Store** — time-windowed aggregations stored in PostgreSQL
 - [ ] **Training Pipeline** — automated retrain on schedule or trigger
 - [ ] **Prediction Endpoint** — real-time churn score for a single customer
