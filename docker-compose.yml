@@ -12,6 +12,7 @@ services:
       - ./data:/app/data
       - ./src:/app/src
       - ./tests:/app/tests
+      - ./configs:/app/configs
     depends_on:
       postgres:
         condition: service_healthy

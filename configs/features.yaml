@@ -1,0 +1,15 @@
+transforms:
+  - name: count_events
+    group_by: customer_id
+    window_days: 7
+
+  - name: count_events
+    group_by: customer_id
+    window_days: 30
+
+  - name: recency_days
+    timestamp_col: timestamp
+    group_by: customer_id
+
+  - name: avg_time_between_events
+    group_by: customer_id

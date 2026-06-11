@@ -78,3 +78,11 @@ IDS/
 - Added `ruff` to dev deps, configured `ignore = ["B008"]` for FastAPI `Depends()`
 - Renamed `IDSException` → `IDSError` (ruff N818)
 - Pinned all deps via pip install in Dockerfile
+
+### 2026-06-10 — Feature Store (Stage 1)
+- Implemented `_count_events`, `_recency_days`, `_avg_time_between_events` transforms in `src/pipeline/features.py`
+- Created `configs/features.yaml` with declarative transform definitions
+- Created `src/pipeline/feature_store.py`: reads events from DB, computes features per YAML config, writes to `features` table
+- Created `GET /api/v1/features/{customer_id}` and `POST /api/v1/features/compute?customer_id=...`
+- Added `FeatureResponse` schema to `src/models/schemas.py`
+- 16/16 tests passing (pipeline unit tests + API integration tests)
