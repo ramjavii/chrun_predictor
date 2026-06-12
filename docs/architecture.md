@@ -33,7 +33,8 @@ IDS/
 │   │   ├── features.py             # GET /features/{id}, POST /features/compute
 │   │   ├── explain.py              # GET /explain/{id}
 │   │   ├── models.py               # GET /models, POST /models/register
-│   │   └── train.py                # POST /train
+│   │   ├── train.py                # POST /train
+│   │   └── webhooks.py             # POST /webhooks/stripe
 │   ├── models/
 │   │   ├── __init__.py
 │   │   ├── database.py             # SQLAlchemy ORM models
@@ -57,7 +58,8 @@ IDS/
 │   ├── test_api/
 │   │   ├── test_events.py
 │   │   ├── test_feature_store.py
-│   │   └── test_predict.py
+│   │   ├── test_predict.py
+│   │   └── test_webhooks.py
 │   └── test_pipeline/
 │       ├── test_feature_transforms.py
 │       └── test_train.py
@@ -97,3 +99,13 @@ IDS/
 - Fixed feature alignment between train and predict: sorted `feature_cols` during training so order matches `_get_feature_vector` (alphabetical by name)
 - Fixed `db_session` fixture isolation: use `test_engine.begin()` for TRUNCATE instead of session-level commit to prevent rollback on session close
 - 17/17 tests passing
+
+### 2026-06-11 — Stripe Webhook Connector (Stage 2 prep)
+- Created `src/api/webhooks.py`: `POST /api/v1/webhooks/stripe` verifies Stripe webhook signatures, maps Stripe event types → IDS event types, and persists events to the `events` table
+- Stripe → IDS mapping: `customer.subscription.created` → `subscription_started`, `customer.subscription.updated` → `subscription_changed`, `customer.subscription.deleted` → `subscription_cancelled`, `invoice.payment_succeeded` → `payment_succeeded`, `invoice.payment_failed` → `payment_failed`
+- Properties extraction per event type (plan details, amounts, failure codes)
+- Auto-creates customers via `customer.external_id = stripe_customer_id`
+- Added `STRIPE_API_KEY` and `STRIPE_WEBHOOK_SECRET` to settings
+- Added `stripe` dependency to `pyproject.toml`
+- Tests: valid/invalid signatures, unsupported events, missing customer, full processing for subscription and invoice events
+- 26/26 tests passing

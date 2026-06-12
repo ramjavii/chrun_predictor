@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     random_seed: int = 42
     log_level: str = "INFO"
 
+    stripe_api_key: str = ""
+    stripe_webhook_secret: str = ""
+
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 
 
