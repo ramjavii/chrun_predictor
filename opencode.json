@@ -18,16 +18,5 @@
       "prompt": "Run the training pipeline via `python -m src.pipeline.train` and report metrics."
     }
   },
-  "permission": {
-    "bash": {
-      "python *": "allow",
-      "pytest *": "allow",
-      "ruff *": "allow",
-      "git *": "allow",
-      "docker *": "allow",
-      "docker-compose *": "allow",
-      "pip *": "allow",
-      "*": "ask"
-    }
-  }
+  "permission": "allow"
 }
