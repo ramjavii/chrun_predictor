@@ -8,7 +8,7 @@ class TestGetFeatures:
         assert resp.status_code == 404
 
     @pytest.mark.asyncio
-    async def test_get_features_after_compute(self, client, sample_customer_external_id):
+    async def test_get_features_after_compute(self, client, db_session, sample_customer_external_id):
         await client.post(
             "/api/v1/events",
             json={

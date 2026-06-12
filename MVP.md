@@ -22,8 +22,8 @@ a pluggable churn-intelligence layer they can self-host or embed.
 
 - [x] **Ingestion API** — receive customer events via REST endpoint
 - [x] **Feature Store** — time-windowed aggregations stored in PostgreSQL
-- [ ] **Training Pipeline** — automated retrain on schedule or trigger
-- [ ] **Prediction Endpoint** — real-time churn score for a single customer
+- [x] **Training Pipeline** — automated retrain on schedule or trigger
+- [x] **Prediction Endpoint** — real-time churn score for a single customer
 - [ ] **Batch Predict** — score all active customers, store results
 - [ ] **Explanation Module** — SHAP-based per-customer reason codes
 - [ ] **Prescriptions Module** — rule-based retention action suggestions
